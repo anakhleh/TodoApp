@@ -109,7 +109,7 @@ class ListItemsController extends Controller
 
         $listItem = ListItem::find($id);
 
-        if(auth()->user->id !== $listItem->user_id){
+        if(auth()->user()->id !== $listItem->user_id){
             return json_encode(array('status' => 'error', 'message' => 'Unauthorized Request'));
         }
 
