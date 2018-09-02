@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\ListItem;
-// use Auth;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -29,13 +29,13 @@ class HomeController extends Controller
     //otherwise, show us the actual index.
     public function index()
     {
-        // if(Auth::check()){
-        //     return view('home');
-        // } else {
+        if(Auth::check()){
             $user_id = auth()->user()->id;
             // $user = User::find($user_id);
             $listItemsOfUser = ListItem::where('user_id', $user_id)->orderBy('priority','item_desc')->get();
             return view('home')->with('items', $listItemsOfUser);
-        // }
+        } else {
+            return view('todoapp.index');
+        }
     }
 }
