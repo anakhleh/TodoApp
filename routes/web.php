@@ -1,5 +1,6 @@
 <?php
 
+// use Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,5 +17,18 @@
 // });
 
 Route::get('/', function(){
-    return view('plainindex');
+    if(Auth::check()){
+        return view('home');
+    } else {
+        return view('todoapp.index');
+    }
+    
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('listitems', 'ListItemsController');
+
+
+// Route::get('/home', 'HomeController@index')->name('home');
