@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected function listItem(){
+    protected function listItems(){
         return $this->hasMany('App\ListItem');
     }
 }

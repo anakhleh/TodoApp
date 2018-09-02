@@ -16,14 +16,7 @@
 //     return view('welcome');
 // });
 
-Route::get('/', function(){
-    if(Auth::check()){
-        return view('home');
-    } else {
-        return view('todoapp.index');
-    }
-    
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
