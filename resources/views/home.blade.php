@@ -26,12 +26,18 @@
                         </tr>
                         @foreach($items as $item)
                                 <tr>
-                                    {!!Form::open(['action' => ['ListItemsController@update', $item->id], 'method' => 'POST', 'class' => 'form-group', 'id' => $item->id])!!}
+                                    {!!Form::open(['action' => ['ListItemsController@update', $item->id], 'method' => 'POST', 'class' => 'form-group'])!!}
                                     {{Form::hidden('_method', 'PUT')}}
                                     <td class="text-center">{!!Form::number('priority',$item->priority, ['class' => 'form-control'])!!}</td>
                                     <td class="text-center">{!!Form::text('item_desc',$item->item_desc, ['class' => 'form-control'])!!}</td>
                                     <td class="text-center">{{Form::submit('Update', ['class' => 'btn btn-info'])}}</td>
-                                    <td class="text-center">{{Form::submit('Remove', ['class' => 'btn btn-danger'])}}</td>
+                                    {!!Form::close()!!}
+                                    <td class="text-center">
+                                            {!!Form::open(['action' => ['ListItemsController@destroy', $item->id], 'method' => 'POST', 'class' => 'form-group'])!!}
+                                            {{Form::hidden('_method', 'DELETE')}}
+                                            {{Form::submit('Remove', ['class' => 'btn btn-danger'])}}
+                                            {!!Form::close()!!}
+                                    </td>
                                     {!!Form::close()!!}
                                 </tr>
                             @endforeach
@@ -43,4 +49,6 @@
         </div>
     </div>
 </div>
+<script>
+</script>
 @endsection
