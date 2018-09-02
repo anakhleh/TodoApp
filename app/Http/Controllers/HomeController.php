@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\ListItem;
 
 class HomeController extends Controller
 {
@@ -21,6 +23,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //This should return the view that is the home list with all the logic
     public function index()
     {
         return view('home');

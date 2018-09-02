@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+//These will never return anything to the user, rather, these will likely just be called from ajax requests.
 class ListItemsController extends Controller
 {
     /**
@@ -18,6 +19,7 @@ class ListItemsController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     * Probably not going to use this because im going to ajax request everything, meaning no create page
      *
      * @return \Illuminate\Http\Response
      */
@@ -34,6 +36,10 @@ class ListItemsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'priority' => 'nullable',
+            'item_desc' => 'required'
+        ]);
         //
     }
 
@@ -57,7 +63,7 @@ class ListItemsController extends Controller
     public function edit($id)
     {
         //
-    }
+    } 
 
     /**
      * Update the specified resource in storage.
@@ -79,6 +85,9 @@ class ListItemsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $listItem = ListItem::find($id);
+
+
+        $listItem->delete();
     }
 }
