@@ -6,3 +6,17 @@ dbdata/
 vendor/
 
 node_modules/
+
+\.env\.prod
+
+certs/\.DS_Store
+
+certs/live/\.DS_Store
+
+\.DS_Store
+
+docker-compose\.prod\.yml
+
+certs/live/example\.com/fullchain\.pem
+
+certs/live/example\.com/privkey\.pem
