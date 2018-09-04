@@ -1,0 +1,5 @@
+Use Cases:
+1) A daily todo list for an individual
+2) A todo list for a team where everyone can see the todos and modify/edit them.
+3) A long-term goals and prioritization tracker.
+4) Far-fetched, but a very basic schedule, since the item priority could be an hour of the day (1-24, 0-23).

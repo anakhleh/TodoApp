@@ -1,0 +1,8 @@
+Test Cases:
+1) Create new user with a password of a length less than 8 characters (should fail with appropriate message).
+2) Create new user with a password of a length >= 8 characters, but without having all of the following: an uppercase, lowercase, numeric, and special character (should fail with appropriate message).
+3) Create new user but not providing an email address as username (whould fail with appropriate message).
+4) Create a new user satisfying all requirements, log in, log out.
+5) Log in, add 3 items, log out. Log in to ensure that the 3 items are still there.
+6) Log in, edit said 3 items, log out. Log in to ensure that the 3 items with their updates are present.
+7) Log in, remove said 3 items, log out. Log in to ensure that the 3 items have been deleted.

@@ -1,0 +1,11 @@
+Functional Requirements (mostly satisfied):
+1) Add a todo item (satisfied)
+2) Delete a todo item (satisfied)
+3) Update a todo item (satisfied)
+4) Must support multiple users (each user has their own TODO list) (satisfied)
+
+Non-functional Requirements (mostly unsatisfied):
+1) A User should be able to add/update/delete from the same page (a usability requirement; satisfied)
+2) The site needs to be able to simultaneously serve >=10,000 people simultaneously while retaining performance (capacity/scalability; unsatisfied)
+3) Data must be backed up every X amount of time (reliability/security; unsatisfied)
+4) App must have 0 downtime (reliability/maintainability/fallbacks; unsatisfied)
