@@ -14,7 +14,7 @@ class TrivialTest extends TestCase
     public function testBasicExample()
     {
         $this->visit('/')
-             ->see('TodoApp');
+             ->assertSee('TodoApp');
     }
 }
 
