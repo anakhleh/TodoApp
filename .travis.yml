@@ -1,0 +1,22 @@
+language: php
+
+#if you wanted to do tests at multiple php versions, do could do it like this
+#php:
+   - 5.5
+   - 5.6
+   - 7.0
+
+#external programs and stuff we want. docker service comes with docker-compose
+services:
+  - docker
+
+#things to do before we build
+before_install:
+#`docker ps` does nothing meaningful. Just here to make sure travis has docker
+  - docker ps
+  - docker run --rm -v $(pwd):/app composer/composer install
+  - docker-compose up -d
+
+#paths to your test script
+script:
+  -tests/TrivialTest.php
