@@ -1,2 +1,2 @@
 #TodoApp
-[![Build Status](https://travis-ci.com/anakhleh/Ocupado-Server.svg?branch=master)](https://travis-ci.com/anakhleh/Ocupado-Server)
+[![Build Status](https://travis-ci.com/anakhleh/TodoApp.svg?branch=setup-travis-ci)](https://travis-ci.com/anakhleh/TodoApp)
