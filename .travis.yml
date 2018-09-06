@@ -19,4 +19,5 @@ before_install:
 
 #paths to your test script
 script:
-  - tests/TrivialTest.php
+#don't point this to some actual script, needs to be pointed to phpunit
+  - vendor/bin/phpunit
