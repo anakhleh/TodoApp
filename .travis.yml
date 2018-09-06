@@ -6,6 +6,11 @@ language: php
 #   - 5.6
 #   - 7.0
 
+php:
+#This is necessary, otherwise travis will run phpunit under 5.5.38 which
+#is not supported by phpunit
+  - 7.1.3
+
 #external programs and stuff we want. docker service comes with docker-compose
 services:
   - docker
