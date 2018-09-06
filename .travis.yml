@@ -19,4 +19,4 @@ before_install:
 
 #paths to your test script
 script:
-  -tests/TrivialTest.php
+  - tests/TrivialTest.php
