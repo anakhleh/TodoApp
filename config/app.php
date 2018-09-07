@@ -164,11 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
-
-        /*
-         * Dusk provicer
-         */
-        Laravel\Dusk\DuskServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
