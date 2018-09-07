@@ -10,6 +10,8 @@ abstract class DuskTestCase extends BaseTestCase
 {
     use CreatesApplication;
 
+    protected $baseUrl = 'http://0.0.0.0:8080';
+
     /**
      * Prepare for Dusk test execution.
      *

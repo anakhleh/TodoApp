@@ -6,6 +6,9 @@ language: php
 #   - 5.6
 #   - 7.0
 
+os:
+  - linux
+
 php:
 #This is necessary, otherwise travis will run phpunit under 5.5.38 which
 #is not supported by phpunit
@@ -21,9 +24,14 @@ before_install:
   - docker ps
   - docker run --rm -v $(pwd):/app composer/composer install
   - docker-compose up -d
+#start a chomedriver instance. Which is inconvenient but the only way I could get this to work.
+#note that the chromedriver is outside of the docker container
+  - ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
+
 
 #paths to your test script
 script:
 #don't point this to some actual script, needs to be pointed to phpunit
+#do unit tests then dusk browser tests. Note that browser tests execute from outside our docker containers
   - vendor/bin/phpunit
-  - docker-compose exec app php artisan dusk
+  - php artisan dusk
