@@ -27,7 +27,7 @@ services:
 before_install:
 #`docker ps` does nothing meaningful. Just here to make sure travis has docker
   - travis_retry docker run --rm -v $(pwd):/app composer/composer install
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9232 http://localhost &
   - docker-compose up -d
 #start a chomedriver instance. Which is inconvenient but the only way I could get this to work.
 #note that the chromedriver is outside of the docker container
