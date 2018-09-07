@@ -38,6 +38,7 @@ before_script:
   - ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
   - cp .env.travis .env
   - php artisan serve > /dev/null 2>&1 &
+  - docker ps
 
   # - php artisan serve &
 
