@@ -17,8 +17,8 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit($this->baseUrl.'/')
-                    ->waitForText('TodoApp', 10)
-                    ->assertSee('TodoApp');
+                    ->waitForText('wrong', 10)
+                    ->assertSee('wrong');
         });
     }
 }
