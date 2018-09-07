@@ -24,11 +24,12 @@ services:
 before_install:
 #`docker ps` does nothing meaningful. Just here to make sure travis has docker
   - cp .env.travis .env
-  - travis_retry docker run --rm -v $(pwd):/app composer/composer install
   # - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9232 http://localhost &
   - docker-compose up -d
   - docker-compose exec app php artisan key:generate
   - docker-compose exec app php artisan optimize
+  - travis_retry docker run --rm -v $(pwd):/app composer/composer install
+
 
 
 before_script:
@@ -44,5 +45,5 @@ before_script:
 script:
 #don't point this to some actual script, needs to be pointed to phpunit
 #do unit tests then dusk browser tests. Note that browser tests execute from outside our docker containers
-  - vendor/bin/phpunit
+  # - vendor/bin/phpunit
   - php artisan dusk
