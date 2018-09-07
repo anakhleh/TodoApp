@@ -26,3 +26,4 @@ before_install:
 script:
 #don't point this to some actual script, needs to be pointed to phpunit
   - vendor/bin/phpunit
+  - docker-compose exec app php artisan dusk
