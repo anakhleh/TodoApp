@@ -26,16 +26,15 @@ services:
 #things to do before we build
 before_install:
 #`docker ps` does nothing meaningful. Just here to make sure travis has docker
-  - cp .env.travis .env
-  - docker ps
-  - docker run --rm -v $(pwd):/app composer/composer install
+  - travis_retry docker run --rm -v $(pwd):/app composer/composer install
   - docker-compose up -d
 #start a chomedriver instance. Which is inconvenient but the only way I could get this to work.
 #note that the chromedriver is outside of the docker container
-  - ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
 
 before_script:
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  # - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
+  - cp .env.travis .env
   - php artisan serve &
 
 #paths to your test script
