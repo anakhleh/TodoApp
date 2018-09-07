@@ -27,6 +27,8 @@ before_install:
 #start a chomedriver instance. Which is inconvenient but the only way I could get this to work.
 #note that the chromedriver is outside of the docker container
   - ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
+#try installing install dusk scaffold before 
+  - php artisan dusk:install
 
 
 #paths to your test script
