@@ -39,8 +39,8 @@ before_install:
   - ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
 
 before_script:
-   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-   - php artisan serve &
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - php artisan serve &
 
 #paths to your test script
 script:
