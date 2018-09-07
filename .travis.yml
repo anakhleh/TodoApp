@@ -24,11 +24,11 @@ services:
 before_install:
 #`docker ps` does nothing meaningful. Just here to make sure travis has docker
   - cp .env.travis .env
+  - travis_retry docker run --rm -v $(pwd):/app composer/composer install
   # - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9232 http://localhost &
   - docker-compose up -d
   - docker-compose exec app php artisan key:generate
   - docker-compose exec app php artisan optimize
-  - travis_retry docker run --rm -v $(pwd):/app composer/composer install
 
 
 

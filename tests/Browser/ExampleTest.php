@@ -15,6 +15,10 @@ class ExampleTest extends DuskTestCase
      */
     public function testBasicExample()
     {
+        echo $this->browse(function (Browser $browser) {
+            $browser->visit($this->baseUrl.'/')
+                    ->dump();
+        });
         $this->browse(function (Browser $browser) {
             $browser->visit($this->baseUrl.'/')
                     ->waitForText('TodoApp', 10)
