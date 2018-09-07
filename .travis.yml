@@ -26,6 +26,7 @@ services:
 #things to do before we build
 before_install:
 #`docker ps` does nothing meaningful. Just here to make sure travis has docker
+  - cp .env.travis .env
   - travis_retry docker run --rm -v $(pwd):/app composer/composer install
   # - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9232 http://localhost &
   - docker-compose up -d
@@ -37,7 +38,6 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
-  - cp .env.travis .env
   - php artisan serve > /dev/null 2>&1 &
   - docker ps
 
