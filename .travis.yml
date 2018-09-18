@@ -1,0 +1,50 @@
+sudo: required
+dist: trusty
+
+
+language: php
+
+php:
+#This is necessary, otherwise travis will run phpunit under 5.5.38 which
+#is not supported by phpunit
+  - 7.1.3
+
+#if you wanted to do tests at multiple php versions, do could do it like this
+#php:
+#   - 5.5
+#   - 5.6
+#   - 7.0
+
+#external programs and stuff we want. docker service comes with docker-compose
+services:
+  - docker
+  
+
+#things to do before we build
+before_install:
+#`docker ps` does nothing meaningful. Just here to make sure travis has docker
+  - cp .env.travis .env
+  - travis_retry docker run --rm -v $(pwd):/app composer/composer install
+  - chmod 777 -R ./storage
+  # - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9232 http://localhost &
+  - docker-compose up -d
+  - docker-compose exec app php artisan key:generate
+  - docker-compose exec app php artisan optimize
+
+
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
+  - php artisan serve > /dev/null 2>&1 &
+  - docker ps
+
+  # - php artisan serve &
+
+#paths to your test script
+script:
+#don't point this to some actual script, needs to be pointed to phpunit
+#do unit tests then dusk browser tests. Note that browser tests execute from outside our docker containers
+  # - vendor/bin/phpunit
+  - php artisan dusk

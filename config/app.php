@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -164,6 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
@@ -179,6 +180,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class
+
         
 
     ],
